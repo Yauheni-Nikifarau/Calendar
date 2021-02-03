@@ -2,7 +2,7 @@ let daysOfWeek = ['пн','вт','ср','чт','пт','сб','вс'];
 
 
 
-let monthstart = daysOfWeek.indexOf(prompt('С какого дня начало?')),
+let monthstart = daysOfWeek.indexOf(prompt('С какого дня начало?(пн,вт,ср,чт,пт,сб,вс)')),
     nums = parseInt(prompt('сколько дней в месяце?')),
     numOfWeeks = Math.ceil((monthstart + nums) / 7),
     day = 1;
