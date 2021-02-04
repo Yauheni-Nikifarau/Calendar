@@ -1,33 +1,54 @@
-let daysOfWeek = ['пн','вт','ср','чт','пт','сб','вс'];
+let daysOfWeek = ['пн','вт','ср','чт','пт','сб','вс'],
+    monthstart,
+    nums,
+    numOfWeeks,
+    day = 1,
+    calendar = '';
 
 
-
-let monthstart = daysOfWeek.indexOf(prompt('С какого дня начало?(пн,вт,ср,чт,пт,сб,вс)')),
-    nums = parseInt(prompt('сколько дней в месяце?')),
-    numOfWeeks = Math.ceil((monthstart + nums) / 7),
-    day = 1;
-
-
-document.write('<table>');
-document.write('<thead>');
-for (let i = 0; i < 7; i++) {
-    document.write(`<th>${daysOfWeek[i]}</th>`);
+while ((monthstart = daysOfWeek.indexOf(monthstart)) == -1) {
+    monthstart = prompt('С какого дня начало?(пн,вт,ср,чт,пт,сб,вс)');
 }
-document.write('</thead>');
+
+while (true) {
+    nums = prompt('Сколько дней в месяце?(28, 29, 30, 31)');
+    nums = Number(nums);
+    if (nums == 28 || nums == 29 || nums == 30 || nums == 31) break;
+}
+
+numOfWeeks = Math.ceil((monthstart + nums) / 7);
+
+calendar += '<table><tr>';
+
+for (let i = 0; i < 7; i++) {
+    calendar += `<th>${daysOfWeek[i]}</th>`;
+}
+
+calendar += '</tr>';
+
+
 for (let i = 1; i <= numOfWeeks && day <= nums; i++) {
-    document.write('<tr>');
+    calendar += '<tr>';
+
     let week = ['','','','','','',''];
+
     for (let j = monthstart; j < 7 && day <= nums; j++) {
         week[j] = day;
         day++;
     }
+
     for (let j = 0; j < 7; j++) {
-        document.write(`<td>${week[j]}</td>`);
+        calendar += `<td>${week[j]}</td>`;
     }
-    document.write('</tr>');
+
+    calendar += '</tr>';
     monthstart = 0;
+
 }
 
-document.write('</table>');
+calendar += '</table>';
+
+document.write(calendar);
+
 
 
