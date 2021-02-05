@@ -27,7 +27,7 @@ for (let i = 0; i < 7; i++) {
 calendar += '</tr>';
 
 
-for (let i = 1; i <= numOfWeeks && day <= nums; i++) {
+for (let i = 1; i <= numOfWeeks; i++) {
     calendar += '<tr>';
 
     let week = ['','','','','','',''];
